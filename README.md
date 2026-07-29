@@ -35,7 +35,7 @@ Abaixo estão listados todos os sistemas e APIs desenvolvidos, com caminhos dire
   - `POST /hackathon/processar` — Valida as inscrições, gera os arquivos locais de saída (`aprovados_hackathon.txt` e `pendencias_inscricao.txt`) e retorna um JSON com o resumo do processamento.
 - **Conceitos aplicados:** Validação de regras de negócio complexas, leitura/escrita simultânea de múltiplos arquivos com `BufferedReader`/`BufferedWriter` e criação de DTOs (`RelatorioProcessamento`) para respostas personalizadas.
 
-📂 [Acessar arquivos desta atividade](./src/main/java/com/example/Portal_Do_Hackathon)
+📂 [Acessar arquivos desta atividade](./Portal_Do_Hackathon)
 
 ---
 
