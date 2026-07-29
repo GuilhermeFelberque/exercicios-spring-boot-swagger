@@ -17,7 +17,6 @@ Abaixo estão listados todos os sistemas e APIs desenvolvidos, com caminhos dire
 - **Conceitos aplicados:** Criação de APIs REST com `@RestController`, manipulação de arquivos com `FileReader`/`BufferedReader` e `FileWriter`/`BufferedWriter` (modo *append*), configuração de CORS para testes via Swagger Editor.
 
 📂 [Acessar arquivos desta atividade](./playlistapi)
-📄 [Ver arquivo de dados desta atividade (minha_playlist.txt)](./arquivos/minha_playlist.txt)
 
 ## ⚔️ 2. O Catálogo de Personagens Web
 
@@ -27,8 +26,7 @@ Abaixo estão listados todos os sistemas e APIs desenvolvidos, com caminhos dire
   - `GET /personagens/categoria/{tipo}` — Filtra os personagens da categoria especificada (`lutador` ou `atirador`) usando o operador `instanceof`.
 - **Conceitos aplicados:** Herança de classes, manipulação de arquivos estruturados (CSV), uso de variáveis de caminho (`@PathVariable`) e filtros de busca com listas.
 
-📂 [Acessar arquivos desta atividade](./src/main/java/com/example/Catalogo_De_Personagens)
-📄 [Ver arquivo de dados desta atividade (personagens_db.csv)](./arquivos/personagens_db.csv.txt)
+📂 [Acessar arquivos desta atividade](./Catalogo_De_Personagens)
 
 ## 🏆 3. O Portal do Hackathon
 
@@ -38,9 +36,6 @@ Abaixo estão listados todos os sistemas e APIs desenvolvidos, com caminhos dire
 - **Conceitos aplicados:** Validação de regras de negócio complexas, leitura/escrita simultânea de múltiplos arquivos com `BufferedReader`/`BufferedWriter` e criação de DTOs (`RelatorioProcessamento`) para respostas personalizadas.
 
 📂 [Acessar arquivos desta atividade](./src/main/java/com/example/Portal_Do_Hackathon)
-📄 [Ver inscrições brutas (inscricoes_brutas.txt)](./arquivos/inscricoes_brutas.txt)
-📄 [Ver relatório de aprovados (aprovados_hackathon.txt)](./arquivos/aprovados_hackathon.txt)
-📄 [Ver relatório de pendências (pendencias_inscricao.txt)](./arquivos/pendencias_inscricoes.txt)
 
 ---
 
