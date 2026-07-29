@@ -1,0 +1,5 @@
+DESENVOLVEDOR;João Silva;19;Java
+DESIGNER;Maria Souza;22;Figma
+DESENVOLVEDOR;Pedro Lima;abc;Python
+DESIGNER;Ana Paula;16;Photoshop
+DESENVOLVEDOR;Carlos Souza;13;JavaScript

@@ -1,0 +1,6 @@
+L;Kazuya;85;Soco Demolidor
+L;Ryu;80;Chute Giratorio
+L;Chun-Li;78;Combo Relampago
+A;Sniper Vex;70;Precisao Cirurgica
+A;Nova Blaze;75;Rajada Dupla
+A;Ghost Reyes;68;Tiro Furtivo

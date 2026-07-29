@@ -1,0 +1,3 @@
+DESIGNER;Maria Souza;22;Figma -> MOTIVO: Idade 22 fora da faixa permitida (14 a 21 anos)
+DESENVOLVEDOR;Pedro Lima;abc;Python -> MOTIVO: Idade inválida (não é um número): 'abc'.
+DESENVOLVEDOR;Carlos Souza;13;JavaScript -> MOTIVO: Idade 13 fora da faixa permitida (14 a 21 anos)
