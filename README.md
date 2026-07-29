@@ -16,7 +16,7 @@ Abaixo estão listados todos os sistemas e APIs desenvolvidos, com caminhos dire
   - `POST /playlist/adicionar` — Recebe uma nova música via `@RequestBody` e salva no final do arquivo em modo append.
 - **Conceitos aplicados:** Criação de APIs REST com `@RestController`, manipulação de arquivos com `FileReader`/`BufferedReader` e `FileWriter`/`BufferedWriter` (modo *append*), configuração de CORS para testes via Swagger Editor.
 
-📂 [Acessar arquivos desta atividade](./src/main/java/com/example/playlistapi)
+📂 [Acessar arquivos desta atividade](./playlistapi)
 📄 [Ver arquivo de dados desta atividade (minha_playlist.txt)](./arquivos/minha_playlist.txt)
 
 ## ⚔️ 2. O Catálogo de Personagens Web
