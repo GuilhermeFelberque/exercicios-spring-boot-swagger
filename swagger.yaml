@@ -1,0 +1,190 @@
+openapi: 3.0.3
+info:
+  title: API dos Exercícios de Spring Boot
+  description: >
+    Documentação da API contendo os três exercícios desenvolvidos em Spring Boot:
+    Playlist de Músicas, Catálogo de Personagens e Portal do Hackathon.
+    Cada seção representa um exercício diferente, todos lendo e escrevendo
+    dados em arquivos locais (TXT/CSV) no servidor.
+  version: "1.0.0"
+servers:
+  - url: http://localhost:8080
+    description: Servidor local de desenvolvimento
+
+tags:
+  - name: Playlist
+    description: Gerencia as músicas salvas no arquivo minha_playlist.txt
+  - name: Personagens
+    description: Catálogo de personagens do jogo, lido a partir do arquivo personagens_db.csv
+  - name: Hackathon
+    description: Processa o lote de inscrições do evento, separando aprovados de pendências
+
+paths:
+  /playlist/listar:
+    get:
+      tags:
+        - Playlist
+      summary: Lista todas as músicas
+      description: >
+        Lê o arquivo minha_playlist.txt linha por linha usando FileReader e
+        BufferedReader, converte cada linha em um objeto Musica e retorna
+        a lista completa em formato JSON.
+      responses:
+        "200":
+          description: Lista de músicas retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Musica"
+
+  /playlist/adicionar:
+    post:
+      tags:
+        - Playlist
+      summary: Adiciona uma nova música
+      description: >
+        Recebe os dados de uma nova música no corpo da requisição e usa
+        FileWriter (modo append) e BufferedWriter para salvar no final do
+        arquivo minha_playlist.txt, sem apagar as músicas já existentes.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Musica"
+      responses:
+        "200":
+          description: Música salva com sucesso
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Música salva com sucesso!"
+
+  /personagens/todos:
+    get:
+      tags:
+        - Personagens
+      summary: Lista todos os personagens
+      description: >
+        Abre o arquivo personagens_db.csv, faz o split por ";", identifica se
+        cada linha é um Lutador ou um Atirador e retorna a lista completa de
+        personagens em formato JSON.
+      responses:
+        "200":
+          description: Lista de personagens retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Personagem"
+
+  /personagens/categoria/{tipo}:
+    get:
+      tags:
+        - Personagens
+      summary: Filtra personagens por categoria
+      description: >
+        Lê o arquivo CSV e retorna apenas os personagens da categoria
+        informada na URL. Se ocorrer erro na leitura, retorna uma lista
+        vazia ou mensagem de erro.
+      parameters:
+        - name: tipo
+          in: path
+          required: true
+          description: Categoria do personagem a ser filtrada
+          schema:
+            type: string
+            enum: [lutador, atirador]
+          example: atirador
+      responses:
+        "200":
+          description: Lista filtrada de personagens retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Personagem"
+
+  /hackathon/processar:
+    post:
+      tags:
+        - Hackathon
+      summary: Processa as inscrições do hackathon
+      description: >
+        Lê o arquivo inscricoes_brutas.txt linha por linha usando
+        BufferedReader, valida os dados e a idade (14 a 21 anos) de cada
+        participante, gera os arquivos aprovados_hackathon.txt e
+        pendencias_inscricao.txt usando BufferedWriter, e retorna um
+        relatório em tempo real com o resumo do processamento.
+      responses:
+        "200":
+          description: Relatório de processamento retornado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RelatorioProcessamento"
+
+components:
+  schemas:
+    Musica:
+      type: object
+      description: Representa uma música da playlist
+      properties:
+        titulo:
+          type: string
+          description: Nome da música
+          example: "Bohemian Rhapsody"
+        artista:
+          type: string
+          description: Nome do artista ou banda
+          example: "Queen"
+        anoLancamento:
+          type: integer
+          description: Ano de lançamento da música
+          example: 1975
+
+    Personagem:
+      type: object
+      description: >
+        Representa um personagem do catálogo. Pode ser um LutadorCorpoACorpo
+        (com o campo arteMarcial) ou um Atirador (com o campo armaPrincipal),
+        ambos herdando de Personagem.
+      properties:
+        nome:
+          type: string
+          description: Nome do personagem
+          example: "Ryu"
+        forcaBase:
+          type: integer
+          description: Valor base de força do personagem
+          example: 80
+        arteMarcial:
+          type: string
+          description: Presente apenas quando o personagem é um LutadorCorpoACorpo
+          example: "Karatê"
+        armaPrincipal:
+          type: string
+          description: Presente apenas quando o personagem é um Atirador
+          example: "Rifle de precisão"
+
+    RelatorioProcessamento:
+      type: object
+      description: Resumo do processamento das inscrições do hackathon
+      properties:
+        quantidadeAprovados:
+          type: integer
+          description: Total de participantes aprovados
+          example: 15
+        quantidadeRejeitados:
+          type: integer
+          description: Total de participantes rejeitados por dados ou idade inválidos
+          example: 3
+        status:
+          type: string
+          description: Mensagem final do processamento
+          example: "Processamento concluído com sucesso"
